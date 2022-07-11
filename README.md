@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Phase 2 Practice Code Challenge - Duck Manager 2022 - React Edition
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To get started, run `npm install` followed by `npm run server`. In a seperate terminal, run `npm start`.
 
-## Available Scripts
+Endpoints: You have access to all the ducks at `http://localhost:4001/ducks`.
 
-In the project directory, you can run:
+## Deliverable One
 
-### `npm start`
+Fetch all the ducks from the db.json and use `.map` in order to show a `DuckListCard` for each of them in the `DuckList`. State has already been built for you for this one...
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Deliverable Two
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+When a `DuckListCard` is clicked, it becomes the `featuredDuck` in state. The `featuredDuck` details are shown in the `DuckDisplay` component.
 
-### `npm test`
+## Deliverable Three
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When the button that says `Open Duck Form` is clicked, it will toggle whether the DuckForm is displayed or not. Use best practices with conditional rendering to show it. Additionally, the button should either read `Open Duck Form` or `Close Duck Form` depending on whether the form is already opened or closed.
 
-### `npm run build`
+## Deliverable Four
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the duck detail, the number of likes should increment whenever the likes button is clicked.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Deliverable Five
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When the number of likes increments, send a PATCH request to edit the duck in the backend.
 
-### `npm run eject`
+Example request:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+fetch(`http://localhost:4001/ducks/2`, {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({likes: 4})
+})
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deliverable Six
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Make the `DuckForm` a controlled form. When submitted, a new duck gets posted to the `db.json`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Example request:
 
-## Learn More
+```js
+fetch(`http://localhost:4001/ducks`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({name: "Sir Quackington", image_url: "http://ducks.com/duckington.jpg", likes: 0})
+})
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Assume ducks start with 0 likes.

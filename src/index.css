@@ -1,13 +1,42 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: lightblue;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.duck-nav {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  width: 100%;
+}
+
+.duck-nav img {
+  width: 150px;
+  border: solid black 2px;
+  margin: 0.3em;
+  border-radius: 0.5em;
+}
+
+.duck-display img {
+  height: 35vh;
+  border: solid black 3px;
+  border-radius: 3em;
+}
+
+.duck-display button {
+  background: pink;
+  border: solid black 1px;
+  border-radius: 0.5em;
+  margin-top: 1em;
+  padding: 0.75em;
+  font-weight: bold;
+}
+
+form {
+  background: yellow;
+  margin: 2em;
+}
+
+form label {
+  display: block;
 }
