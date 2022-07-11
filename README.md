@@ -1,6 +1,6 @@
 # Phase 2 Practice Code Challenge - Duck Manager 2022 - React Edition
 
-To get started, run `npm install` followed by `npm run server`. In a seperate terminal, run `npm start`.
+To get started, fork and clone the repository and run `npm install` followed by `npm run server`. In a seperate terminal, run `npm start`.
 
 Endpoints: You have access to all the ducks at `http://localhost:4001/ducks`.
 
