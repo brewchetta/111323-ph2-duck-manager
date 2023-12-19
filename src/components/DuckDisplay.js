@@ -1,16 +1,45 @@
 import React from 'react'
 
-function DuckDisplay(props) {
+function DuckDisplay({ featuredDuck, setDucks, ducks, setFeaturedDuck }) {
+
+  function handleClick() {
+
+    const editedDuckObj = { ...featuredDuck, likes: featuredDuck.likes + 1 }
+
+    const editedDucksArray = ducks.map( duck => {
+      if (duck.id !== featuredDuck.id) {
+        return duck
+      } else {
+        return editedDuckObj
+      }
+    })
+
+    setDucks(editedDucksArray)
+    setFeaturedDuck(editedDuckObj)
+
+    fetch(`http://localhost:4001/ducks/${editedDuckObj.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': "application/json",
+        'Accept': "application/json"
+      },
+      body: JSON.stringify(editedDuckObj)
+    })
+    .then( res => res.json() )
+    .then( () => {
+      
+    })
+
+  }
+
   return (
     <div className="duck-display">
 
-      {/* show all the details for the featuredDuck state here */}
+      <h2>{featuredDuck.name}</h2>
 
-      <h2>{"Duck Name Goes Here"}</h2>
+      <img src={featuredDuck.img_url} alt={featuredDuck.name} />
 
-      <img src={"#"} alt={"duck name goes here"} />
-
-      <button>0 likes</button>
+      <button onClick={ handleClick }>{featuredDuck.likes} likes</button>
 
     </div>
   )
